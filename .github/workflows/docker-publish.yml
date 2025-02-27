@@ -29,4 +29,5 @@ jobs:
 
       - name: Build and Publish Image with Pack
         run: |
-          pack build ghcr.io/${{ github.repository }} --path . --builder heroku/builder:24 --publish
+          IMAGE_NAME="ghcr.io/$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]'):latest"
+          pack build $IMAGE_NAME --path . --builder heroku/builder:24 --publish
